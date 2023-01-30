@@ -1,7 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
   alias(libs.plugins.kotlin.js)
-  alias(libs.plugins.npm.publish)
+  //alias(libs.plugins.npm.publish)
 }
 
 kotlin {
@@ -22,6 +22,7 @@ kotlin {
   }
 }
 
+/*
 npmPublish {
   organization.set("myorg")
 
@@ -42,3 +43,4 @@ npmPublish {
     }
   }
 }
+ */
