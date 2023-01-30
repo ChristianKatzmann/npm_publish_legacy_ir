@@ -1,0 +1,40 @@
+name: build
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request: { }
+
+env:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dkotlin.incremental=false"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1.0.5
+
+      - name: Configure JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Setup and execute Gradle 'build' task
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+
+      - name: Upload Test Failures
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-failures
+          path: |
+            **/build/reports/tests/test/
+            **/out/failures/

@@ -1,0 +1,6 @@
+[versions]
+kotlin = "1.8.0"
+
+[plugins]
+kotlin-js = { id = "org.jetbrains.kotlin.js", version.ref = "kotlin" }
+npm-publish = "dev.petuska.npm.publish:3.2.0"

@@ -1,0 +1,10 @@
+# Gradle
+.idea
+.gradle
+build
+out
+*.iml
+
+# Ex-/Imports
+export/*
+import/*
